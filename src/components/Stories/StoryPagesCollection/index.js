@@ -17,6 +17,7 @@ class StoryPagesCollection extends Component {
     constructor() {
         super();
         this.fetchNextPage = this.fetchNextPage.bind(this);
+        this.refreshData = this.refreshData.bind(this);
     }
 
     // override zones
@@ -24,7 +25,7 @@ class StoryPagesCollection extends Component {
         const { pagesFetched, fetchStoryPages } = this.props;
         if (!pagesFetched) {
             fetchStoryPages();
-        }
+        } 
     }
 
     componentDidUpdate() {
@@ -35,8 +36,14 @@ class StoryPagesCollection extends Component {
         const { nextPageToFetch, fetchStoriesForPage, storyIDs } = this.props;
         if (nextPageToFetch >= 0) {
             fetchStoriesForPage(storyIDs, nextPageToFetch);
-        }           
+        } 
     } 
+
+    refreshData() {
+        const { fetchStoryPages, reloadStories } = this.props;
+        reloadStories();
+        fetchStoryPages();
+    }
 
     render() {
         const { pagedStoriesFetched, hasMorePages } = this.props;
@@ -46,7 +53,12 @@ class StoryPagesCollection extends Component {
                 next={this.fetchNextPage}
                 hasMore={hasMorePages}
                 loader={<Loader />}
-                style={{height: '100%',overflow: 'visible',}}
+
+                refreshFunction={this.refreshData}
+                pullDownToRefresh={true}
+
+                style={{height: '100%', overflowY: 'hidden',}}
+
             >
                 <StoryPagesCollectionWrapper>
                     { pagedStoriesFetched && pagedStoriesFetched.map(page => {                            
@@ -80,6 +92,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchStoriesForPage: (storyIDs, pageIndex) =>  dispatch(actions.fetchStoriesForPage({storyIDs, pageIndex})),    
         fetchStoryPages: () => dispatch(actions.fetchStoryPages({fetchFirstPage: true})),
+        reloadStories: () => dispatch(actions.reloadStories()),
     }
 }
 

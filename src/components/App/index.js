@@ -26,7 +26,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-      this.setBodyBackgroundColor()
+        this.setBodyBackgroundColor()
     }
 
     componentDidUpdate() {
@@ -34,7 +34,7 @@ class App extends Component {
     }
 
     setBodyBackgroundColor() {
-      document.body.style = `background-color: ${this.props.theme.background.primary}`;
+        document.body.style = `background-color: ${this.props.theme.background.primary}`;
     }
 }
 

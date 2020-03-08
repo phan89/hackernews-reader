@@ -14,12 +14,20 @@ export const actionTypes = {
     FETCH_PAGE_STORIES_BATCH_REQUEST: `${NS}/FETCH_PAGE_STORIES_BATCH_REQUEST`,
     FETCH_PAGE_STORIES_BATCH_SUCCESS: `${NS}/FETCH_PAGE_STORIES_BATCH_SUCCESS`,
     FETCH_PAGE_STORIES_BATCH_FAILURE: `${NS}/FETCH_PAGE_STORIES_BATCH_FAILURE`,
+
+    RELOAD_STORIES: `${NS}/RELOAD_STORIES`,
 }
 
 const defaultAction = (type, payload) => ({type, payload});
 export const BATCH_SIZE = 5;
 
 const actions = {
+
+    reloadStories: (payload={}) => {
+        return dispatch => {
+            dispatch(defaultAction(actionTypes.RELOAD_STORIES, payload));            
+        }
+    },
 
     fetchStoryPages: (payload={}) => {
         const fetchFirstPage = {payload}

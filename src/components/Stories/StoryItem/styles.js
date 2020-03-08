@@ -1,5 +1,6 @@
 import styled, {css} from 'styled-components';
 import { AnimitedBlink } from 'components/Loader/styles'
+import { mobile, tablet } from 'styles/mediaQueries';
 
 export const BoxScore = styled.div`
   font-size: 12px;
@@ -8,6 +9,7 @@ export const BoxScore = styled.div`
 
 export const HotBox = styled.div`
   min-width: 80px;
+
   display: flex;
   justify-content: center;
   align-items: center;  
@@ -16,6 +18,10 @@ export const HotBox = styled.div`
   background-color: ${({ theme }) => theme.background.secondary};
   padding: 14px;
 
+  ${tablet} {
+    min-width: 60px;
+    padding: 11px;
+  }
 `;
 
 export const ChatBox = styled.div`
@@ -32,6 +38,11 @@ export const ChatBox = styled.div`
   font-size: 12px;
   line-height: 1.45;
 
+  ${tablet} {
+    line-height: 1;
+    font-size: 11px;
+  }
+
   &:after {
     margin-top: -.13rem;
     margin-left: .07rem;
@@ -46,6 +57,11 @@ export const ContentBox = styled.div`
   padding-left: 14px;
   justify-content: center;
   flex: 1;
+
+  ${tablet} {
+    padding-left: 12px;
+  }
+
 `;
 
 export const StoryListItem = styled.li`
@@ -74,12 +90,20 @@ export const Title = styled.h3`
   font-size: 16px;
   letter-spacing: 0.4px;
   margin-right: 5px;
+
+
+  ${tablet} {
+    font-size: 13px;
+  }
 `;
 
 export const Host = styled.span`
   color: ${({ theme }) => theme.text.secondary};
   font-size: 12px;
-`;
+
+  ${tablet} {
+    font-size: 11px;
+  }`;
 
 export const ExternalLink = styled.a`
   color: ${({ theme }) => theme.text.primary};
@@ -100,6 +124,10 @@ export const ExternalLink = styled.a`
 export const Description = styled.div`
   font-size: 12px;
   color: ${({ theme }) => theme.text.secondary};
+
+  ${tablet} {
+    font-size: 11px;
+  }
 `;
 
 

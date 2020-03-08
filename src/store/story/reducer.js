@@ -11,6 +11,10 @@ const initialState = () => ({
 
 const story = (state=initialState(), { type, payload })  => {
     switch (type) {
+        case actionTypes.RELOAD_STORIES:
+            {
+                return initialState();
+            }
         case actionTypes.FETCH_TOP_STORY_IDS_REQUEST:
             {
                 return {

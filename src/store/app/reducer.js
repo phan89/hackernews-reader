@@ -1,4 +1,4 @@
-import actions, { actionTypes, LOCAL_STORAGE_PREFERENCE_THEME } from './actions'
+import { actionTypes, LOCAL_STORAGE_PREFERENCE_THEME } from './actions'
 
 import { themes } from 'styles/palette';
 
