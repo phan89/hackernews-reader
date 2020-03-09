@@ -20,7 +20,7 @@ export const HotBox = styled.div`
 
   ${tablet} {
     min-width: 60px;
-    padding: 11px;
+    padding: 12px;
   }
 `;
 
@@ -40,7 +40,6 @@ export const ChatBox = styled.div`
 
   ${tablet} {
     line-height: 1;
-    font-size: 11px;
   }
 
   &:after {
@@ -54,12 +53,12 @@ export const ChatBox = styled.div`
 export const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 14px;
+  padding: 14px 0 14px 14px;
   justify-content: center;
   flex: 1;
 
   ${tablet} {
-    padding-left: 12px;
+    padding: 12px 0 12px 6px;
   }
 
 `;
@@ -91,19 +90,13 @@ export const Title = styled.h3`
   letter-spacing: 0.4px;
   margin-right: 5px;
 
-
-  ${tablet} {
-    font-size: 13px;
-  }
 `;
 
 export const Host = styled.span`
   color: ${({ theme }) => theme.text.secondary};
   font-size: 12px;
 
-  ${tablet} {
-    font-size: 11px;
-  }`;
+  `;
 
 export const ExternalLink = styled.a`
   color: ${({ theme }) => theme.text.primary};
@@ -125,9 +118,6 @@ export const Description = styled.div`
   font-size: 12px;
   color: ${({ theme }) => theme.text.secondary};
 
-  ${tablet} {
-    font-size: 11px;
-  }
 `;
 
 
