@@ -56,13 +56,11 @@ class StoryPagesCollection extends Component {
 
                 refreshFunction={this.refreshData}
                 pullDownToRefresh={true}
-                style={{height: '100%', overflowY: 'hidden',}}            >
-                <StoryPagesCollectionWrapper>
-                    { pagedStoriesFetched && pagedStoriesFetched.map(page => {                            
-                        return <StoryPage  key={page.index} page={page}/>
-                    })}
-                       
-                </StoryPagesCollectionWrapper>
+                style={{height: '100%', overflowY: 'hidden',}}    
+                        >
+                { pagedStoriesFetched && pagedStoriesFetched.map(page => {                            
+                    return <StoryPage  key={page.index} page={page}/>
+                })}
             </InfiniteScroll>          
         )
     }
