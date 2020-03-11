@@ -56,7 +56,7 @@ class StoryPagesCollection extends Component {
 
                 refreshFunction={this.refreshData}
                 pullDownToRefresh={true}
-                style={{height: '100%', overflowY: 'hidden',}}    
+                style={{height: '100%', overflow: 'visible',}}    
                         >
                 { pagedStoriesFetched && pagedStoriesFetched.map(page => {                            
                     return <StoryPage  key={page.index} page={page}/>
