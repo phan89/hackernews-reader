@@ -1,53 +1,48 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { ThemeProvider } from 'styled-components'
+import React, {Component} from "react"
+import {connect} from "react-redux"
+import {ThemeProvider} from "styled-components"
 
-import { Wrapper,  } from './style.js'
-import NavBar from 'components/Navigation'
-import StoryPagesCollection from 'components/Stories/StoryPagesCollection'
+import {Wrapper} from "./style.js"
+import NavBar from "components/Navigation"
+import StoryPagesCollection from "components/Stories/StoryPagesCollection"
 
 class App extends Component {
-    
-    render() {
-        const { theme } = this.props;
-        return (
-            <ThemeProvider theme={theme}>
-                <div>
-                    <Wrapper>
-                        <NavBar>
-                        </NavBar>
+  render() {
+    const {theme} = this.props
+    return (
+      <ThemeProvider theme={theme}>
+        <div>
+          <Wrapper>
+            <NavBar></NavBar>
 
-                        <StoryPagesCollection/>
-                           
-                    </Wrapper>
-                </div>
-            </ThemeProvider>
-        )
-    }
+            <StoryPagesCollection />
+          </Wrapper>
+        </div>
+      </ThemeProvider>
+    )
+  }
 
-    componentDidMount() {
-        this.setBodyBackgroundColor()
-    }
+  componentDidMount() {
+    this.setBodyBackgroundColor()
+  }
 
-    componentDidUpdate() {
-        this.setBodyBackgroundColor()   
-    }
+  componentDidUpdate() {
+    this.setBodyBackgroundColor()
+  }
 
-    setBodyBackgroundColor() {
-        document.body.style = `background-color: ${this.props.theme.background.primary}`;
-    }
+  setBodyBackgroundColor() {
+    document.body.style = `background-color: ${this.props.theme.background.primary}`
+  }
 }
 
-const mapStateToProps = (state) => {
-    return { 
-        theme: state.app.theme,
-    }
+const mapStateToProps = state => {
+  return {
+    theme: state.app.theme,
+  }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        
-    }
+const mapDispatchToProps = dispatch => {
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

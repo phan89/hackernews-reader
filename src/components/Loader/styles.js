@@ -1,5 +1,4 @@
-import styled, { keyframes, css } from 'styled-components';
-
+import styled, {keyframes, css} from "styled-components"
 
 const blink = keyframes`
   /**
@@ -23,8 +22,7 @@ const blink = keyframes`
   100% {
     opacity: .2;
   }
-`;
-
+`
 
 export const AnimitedBlink = css`
   /**
@@ -55,19 +53,18 @@ export const AnimitedBlink = css`
   &:nth-child(3) {
     animation-delay: 0.4s;
   }
-`;
-
+`
 
 export const Animation = styled.div`
   text-align: center;
   span {
-    color: ${({ theme }) => theme.text.secondary};
+    color: ${({theme}) => theme.text.secondary};
     display: inline-block;
     margin-left: 4px;
     margin-right: 4px;
     font-size: 80px;
     line-height: 0.1;
 
-    ${AnimitedBlink}  
-  };
-`;
+    ${AnimitedBlink}
+  }
+`

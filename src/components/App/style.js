@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { tablet } from 'styles/mediaQueries';
+import styled from "styled-components"
+import {tablet} from "styles/mediaQueries"
 
 export const Wrapper = styled.div`
   width: 50%;
@@ -11,5 +11,4 @@ export const Wrapper = styled.div`
   ${tablet} {
     width: 96%;
   }
-`;
-
+`
