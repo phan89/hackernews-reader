@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "https://phan89.github.io/hackernews-reader/static/js/main.45fe5f70.chunk.js",
-    "main.js.map": "https://phan89.github.io/hackernews-reader/static/js/main.45fe5f70.chunk.js.map",
-    "runtime-main.js": "https://phan89.github.io/hackernews-reader/static/js/runtime-main.f74b87e5.js",
-    "runtime-main.js.map": "https://phan89.github.io/hackernews-reader/static/js/runtime-main.f74b87e5.js.map",
-    "static/js/2.3813c8fc.chunk.js": "https://phan89.github.io/hackernews-reader/static/js/2.3813c8fc.chunk.js",
-    "static/js/2.3813c8fc.chunk.js.map": "https://phan89.github.io/hackernews-reader/static/js/2.3813c8fc.chunk.js.map",
-    "index.html": "https://phan89.github.io/hackernews-reader/index.html",
-    "precache-manifest.0142d67d59d984b613f80fc39f99e56b.js": "https://phan89.github.io/hackernews-reader/precache-manifest.0142d67d59d984b613f80fc39f99e56b.js",
-    "service-worker.js": "https://phan89.github.io/hackernews-reader/service-worker.js",
-    "static/js/2.3813c8fc.chunk.js.LICENSE.txt": "https://phan89.github.io/hackernews-reader/static/js/2.3813c8fc.chunk.js.LICENSE.txt"
+    "main.js": "/hackernews-reader/static/js/main.017f64e5.chunk.js",
+    "main.js.map": "/hackernews-reader/static/js/main.017f64e5.chunk.js.map",
+    "runtime-main.js": "/hackernews-reader/static/js/runtime-main.6b779de2.js",
+    "runtime-main.js.map": "/hackernews-reader/static/js/runtime-main.6b779de2.js.map",
+    "static/js/2.e0db9066.chunk.js": "/hackernews-reader/static/js/2.e0db9066.chunk.js",
+    "static/js/2.e0db9066.chunk.js.map": "/hackernews-reader/static/js/2.e0db9066.chunk.js.map",
+    "index.html": "/hackernews-reader/index.html",
+    "precache-manifest.d92a5c35d425dc559c8d9b6967865784.js": "/hackernews-reader/precache-manifest.d92a5c35d425dc559c8d9b6967865784.js",
+    "service-worker.js": "/hackernews-reader/service-worker.js",
+    "static/js/2.e0db9066.chunk.js.LICENSE.txt": "/hackernews-reader/static/js/2.e0db9066.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.f74b87e5.js",
-    "static/js/2.3813c8fc.chunk.js",
-    "static/js/main.45fe5f70.chunk.js"
+    "static/js/runtime-main.6b779de2.js",
+    "static/js/2.e0db9066.chunk.js",
+    "static/js/main.017f64e5.chunk.js"
   ]
 }
