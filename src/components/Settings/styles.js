@@ -54,5 +54,5 @@ export const UserDisplayName = styled.span`
 
 export const ActionLabel = styled.span`
   font-size: ${ACTION_LABEL_FONT_SIZE}px;
-  margin-left: 4px;
+  margin-right: 4px;
 `;

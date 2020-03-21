@@ -21,10 +21,8 @@ class SignedOutSettingsComponent extends Component {
       <React.Fragment>
         <DropdownMenuItem>
           <Action onClick={this.openLoginPrompt}>
-            <React.Fragment>
-              <GoSignIn />
-              <ActionLabel>Login with Google</ActionLabel>
-            </React.Fragment>
+            <ActionLabel>Login with Google</ActionLabel>
+            <GoSignIn />
           </Action>
         </DropdownMenuItem>
         <CommonSettings />

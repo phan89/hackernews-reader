@@ -29,13 +29,13 @@ class CommonSettingsComponents extends Component {
           <Action>
             {theme.name === themes.dark.name ? (
               <React.Fragment>
-                <TiWeatherSunny />
                 <ActionLabel>Use light theme</ActionLabel>
+                <TiWeatherSunny />
               </React.Fragment>
             ) : (
               <React.Fragment>
-                <TiWeatherNight />
                 <ActionLabel>Use dark theme</ActionLabel>
+                <TiWeatherNight />
               </React.Fragment>
             )}
           </Action>

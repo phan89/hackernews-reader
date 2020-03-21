@@ -23,8 +23,8 @@ class SignedInSettingsComponent extends Component {
         <DropdownMenuItem>
           <Action>
             <React.Fragment>
-              <GoPerson />
               <ActionLabel>{firebaseAuth.displayName}</ActionLabel>
+              <GoPerson />
             </React.Fragment>
           </Action>
         </DropdownMenuItem>
@@ -32,8 +32,8 @@ class SignedInSettingsComponent extends Component {
         <DropdownMenuItem>
           <Action onClick={this.signUserOut}>
             <React.Fragment>
-              <GoSignOut />
               <ActionLabel>Sign-out</ActionLabel>
+              <GoSignOut />
             </React.Fragment>
           </Action>
         </DropdownMenuItem>

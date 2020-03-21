@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { tablet, desk } from 'styles/mediaQueries';
 
 // Header, Link, Logo, Nav, Action
 
@@ -6,7 +7,6 @@ const HEADER_HEIGHT = 60;
 const LOGO_WIDTH = 36;
 const LOGO_HEIGHT = 36;
 const ACTION_BUTTON_FONT_SIZE = 28;
-const ACTION_LABEL_FONT_SIZE = 22;
 
 export const Header = styled.header`
   background-color: ${({ theme }) => theme.background.secondary};
@@ -20,22 +20,32 @@ export const Header = styled.header`
 
 export const Title = styled.h1`
   color: ${({ theme }) => theme.text.primary};
-  font-size: 24px;
-  font-weight: 300;
+  font-size: 22px;
+  ${tablet} {
+    font-size: 18px;
+  }
+  font-weight: 400;
   display: flex;
   text-align: center;
   align-items: center;
-  margin-left: 5px;
+  margin-left: 10px;
 `;
 
 export const Link = styled.a`
   display: flex;
 `;
 
+export const MainLink = styled(Link)`
+float: left; 
+width: 400px;
+}
+`;
+
 export const Nav = styled.div`
   display: flex;
-  margin-left: auto;
   order: 2;
+  width: 100%;
+  max-width: 12em;
 `;
 
 export const Action = styled.div`
@@ -67,4 +77,6 @@ export const Logo = styled.svg`
 export const DropdownMenuContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: auto;
+  width: 100%;
 `;

@@ -5,10 +5,8 @@ import { ThemeProvider } from 'styled-components';
 import { Wrapper } from './style.js';
 import NavBar from 'components/Navigation';
 import StoryPagesCollection from 'components/Stories/StoryPagesCollection';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ModalProvider } from 'styled-react-modal';
 
-import firebase from 'config/firebase';
 import Loader from '../Loader/index.js';
 
 class App extends Component {
@@ -17,19 +15,15 @@ class App extends Component {
     const firebaseAuth = firebaseReducer.auth;
     const isAuthLoaded = firebaseAuth.isLoaded;
     return (
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <ThemeProvider theme={theme}>
-          <ModalProvider>
-            <Wrapper>
-              <NavBar firebaseAuth={firebaseAuth} />
-              <Switch>
-                <Route exact path='/' component={StoryPagesCollection} />
-              </Switch>
-            </Wrapper>
-            {isAuthLoaded && <Loader />}
-          </ModalProvider>
-        </ThemeProvider>
-      </BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <ModalProvider>
+          <Wrapper>
+            <NavBar firebaseAuth={firebaseAuth} />
+            <StoryPagesCollection />
+          </Wrapper>
+          {isAuthLoaded && <Loader />}
+        </ModalProvider>
+      </ThemeProvider>
     );
   }
 
