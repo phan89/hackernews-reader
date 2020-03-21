@@ -1,5 +1,5 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 export const StoryPagesCollectionWrapper = styled.div`
-  background-color: ${({theme}) => theme.backgroundSecondary};
-`
+  background-color: ${({ theme }) => theme.backgroundSecondary};
+`;

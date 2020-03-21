@@ -1,12 +1,12 @@
-import React, {Component} from "react"
-import {StoryPageWrapper} from "./styles"
-import StoryBatchWrapper from "../StoryBatch"
-import Utils from "store/story/utils"
+import React, { Component } from 'react';
+import { StoryPageWrapper } from './styles';
+import StoryBatchWrapper from '../StoryBatch';
+import Utils from 'store/story/utils';
 
 class StoryPage extends Component {
   render() {
-    const {page, bogusLoader} = this.props
-    const batches = Utils.getPageBatches(page)
+    const { page, bogusLoader } = this.props;
+    const batches = Utils.getPageBatches(page);
     return (
       <StoryPageWrapper bogusLoader={bogusLoader}>
         {batches &&
@@ -21,8 +21,8 @@ class StoryPage extends Component {
             ></StoryBatchWrapper>
           ))}
       </StoryPageWrapper>
-    )
+    );
   }
 }
 
-export default StoryPage
+export default StoryPage;

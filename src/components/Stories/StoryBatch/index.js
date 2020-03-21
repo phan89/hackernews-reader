@@ -1,12 +1,12 @@
-import StoryItem from "components/Stories/StoryItem"
+import StoryItem from 'components/Stories/StoryItem';
 
-import React, {Component} from "react"
-import {connect} from "react-redux"
-import actions from "store/story/actions"
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { storyActions } from 'store/story/actions';
 
 export class StoryBatch extends Component {
   render() {
-    const {batchStories, bogusLoader} = this.props
+    const { batchStories, bogusLoader } = this.props;
     return (
       <React.Fragment>
         {batchStories &&
@@ -14,7 +14,7 @@ export class StoryBatch extends Component {
             <StoryItem key={story.id} story={story} bogusLoader={bogusLoader}></StoryItem>
           ))}
       </React.Fragment>
-    )
+    );
   }
 }
 
@@ -26,18 +26,18 @@ class StoryBatchWrapper extends Component {
       batchIndex,
       batchStoryIDs,
       fetchedStories,
-    } = this.props
-    let effectiveStories = batchStories
+    } = this.props;
+    let effectiveStories = batchStories;
     if (!effectiveStories || batchStories.length === 0) {
-      effectiveStories = []
+      effectiveStories = [];
       if (fetchedStories) {
         effectiveStories = batchStoryIDs
           .filter(storyID => {
-            return storyID in fetchedStories
+            return storyID in fetchedStories;
           })
           .map(storyID => {
-            return fetchedStories[storyID]
-          })
+            return fetchedStories[storyID];
+          });
       }
     }
 
@@ -48,7 +48,7 @@ class StoryBatchWrapper extends Component {
         key={batchIndex}
         bogusLoader={bogusLoader}
       ></StoryBatch>
-    )
+    );
   }
 
   componentDidMount() {
@@ -58,36 +58,36 @@ class StoryBatchWrapper extends Component {
       fetchBatchStoriesFromStoryIDs,
       batchIndex,
       pageIndex,
-    } = this.props
+    } = this.props;
     if (!batchStories || batchStories.length === 0) {
-      fetchBatchStoriesFromStoryIDs(batchStoryIDs, batchIndex, pageIndex)
+      fetchBatchStoriesFromStoryIDs(batchStoryIDs, batchIndex, pageIndex);
     }
   }
 }
 
 const mapStateToWrapperProps = state => {
-  const storyReducer = state.story
-  const fetchedStories = storyReducer.fetchedStories
+  const storyReducer = state.story;
+  const fetchedStories = storyReducer.fetchedStories;
   return {
     theme: state.app.theme,
     fetchedStories: fetchedStories,
-  }
-}
+  };
+};
 
 const mapDispatchToWrapperProps = dispatch => {
   return {
     fetchBatchStoriesFromStoryIDs: (batchStoryIDs, batchIndex, pageIndex) =>
       dispatch(
-        actions.fetchBatchStoriesFromStoryIDs({
+        storyActions.fetchBatchStoriesFromStoryIDs({
           batchStoryIDs,
           batchIndex,
           pageIndex,
         })
       ),
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToWrapperProps,
   mapDispatchToWrapperProps
-)(StoryBatchWrapper)
+)(StoryBatchWrapper);

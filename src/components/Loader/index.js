@@ -1,5 +1,6 @@
-import React from "react"
-import {Animation} from "./styles"
+import React from 'react';
+import { Animation } from './styles';
+
 const Loader = () => {
   return (
     <div>
@@ -9,7 +10,7 @@ const Loader = () => {
         <span>.</span>
       </Animation>
     </div>
-  )
-}
+  );
+};
 
-export default Loader
+export default Loader;

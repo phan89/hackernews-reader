@@ -1,69 +1,69 @@
-import {actionTypes} from "./actions"
-import {PAGE_STATUS} from "services/hackernewsAPI"
+import { actionTypes } from './actions';
+import { PAGE_STATUS } from 'services/hackernewsAPI';
 
 const initialState = () => ({
   storyIDs: [],
   pages: [],
-  error: "",
+  error: '',
   isFetching: false,
   pagesFetched: false,
   fetchedStories: {},
-})
+});
 
-const story = (state = initialState(), {type, payload}) => {
+const story = (state = initialState(), { type, payload }) => {
   switch (type) {
     case actionTypes.RELOAD_STORIES: {
-      return initialState()
+      return initialState();
     }
     case actionTypes.FETCH_TOP_STORY_IDS_REQUEST: {
       return {
         ...state,
         isFetching: true,
-      }
+      };
     }
     case actionTypes.FETCH_PAGE_STORIES_BATCH_REQUEST:
     case actionTypes.FETCH_PAGE_STORIES_REQUEST: {
-      const {pageIndex} = payload
-      state.pages[pageIndex].status = PAGE_STATUS.FETCHING
+      const { pageIndex } = payload;
+      state.pages[pageIndex].status = PAGE_STATUS.FETCHING;
       return {
         ...state,
         isFetching: true,
-      }
+      };
     }
     case actionTypes.FETCH_PAGE_BATCH_STORIES_SUCCESS: {
-      const {batchStories} = payload
+      const { batchStories } = payload;
       batchStories.map(story => {
-        state.fetchedStories[story.id] = story
-      })
+        state.fetchedStories[story.id] = story;
+      });
       return {
         ...state,
         isFetching: false,
-      }
+      };
     }
     case actionTypes.FETCH_TOP_STORY_IDS_SUCCESS:
-      const {pages} = payload
-      const pagesFetched = typeof pages !== "undefined" && pages.length !== 0
+      const { pages } = payload;
+      const pagesFetched = typeof pages !== 'undefined' && pages.length !== 0;
 
       return {
         ...state,
         ...payload,
         isFetching: false,
         pagesFetched: pagesFetched,
-      }
+      };
 
     case actionTypes.FETCH_PAGE_BATCHES_SUCCESS:
-      const {pageStoryIDs, pageIndex} = payload
+      const { pageStoryIDs, pageIndex } = payload;
 
-      state.pages[pageIndex].storyIDs = pageStoryIDs
-      state.pages[pageIndex].status = PAGE_STATUS.FETCHED
+      state.pages[pageIndex].storyIDs = pageStoryIDs;
+      state.pages[pageIndex].status = PAGE_STATUS.FETCHED;
       return {
         ...state,
         isFetching: false,
-      }
+      };
 
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default story
+export default story;
