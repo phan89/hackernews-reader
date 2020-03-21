@@ -46,6 +46,7 @@ export const Nav = styled.div`
   order: 2;
   width: 100%;
   max-width: 12em;
+  margin-left: auto;
 `;
 
 export const Action = styled.div`

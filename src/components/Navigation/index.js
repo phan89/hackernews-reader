@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { isMobileOrTablet } from 'utils/Utils';
 import {
   Header,
   Link,
@@ -20,6 +20,7 @@ import { appActions } from 'store/app/actions';
 class NavBar extends Component {
   constructor() {
     super();
+
     this.showSettingsMenu = this.showSettingsMenu.bind(this);
     this.hideSettingsMenu = this.hideSettingsMenu.bind(this);
     this.toggleSettingsMenu = this.toggleSettingsMenu.bind(this);
@@ -39,6 +40,8 @@ class NavBar extends Component {
   }
 
   render() {
+    // to avoid conflict between onMouseEnter/onClick events in mobile devices, only set one binding per device type
+    const isMobile = isMobileOrTablet();
     return (
       <Header>
         <MainLink href='/'>
@@ -49,11 +52,11 @@ class NavBar extends Component {
         </MainLink>
         <Nav>
           <DropdownMenuContainer
-            onMouseEnter={this.showSettingsMenu}
-            onMouseLeave={this.hideSettingsMenu}
+            onMouseEnter={!isMobile ? this.showSettingsMenu : null}
+            onMouseLeave={!isMobile ? this.hideSettingsMenu : null}
           >
             <SettingsAction>
-              <GoThreeBars onClick={this.toggleSettingsMenu} />
+              <GoThreeBars onClick={isMobile ? this.toggleSettingsMenu : null} />
             </SettingsAction>
             <MainSettingsMenu />
           </DropdownMenuContainer>
