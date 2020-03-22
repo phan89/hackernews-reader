@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { isMobileOrTablet } from 'utils/Utils';
 import {
   Header,
-  Link,
   Logo,
   Nav,
   SettingsAction,

@@ -34,6 +34,7 @@ const story = (state = initialState(), { type, payload }) => {
       const { batchStories } = payload;
       batchStories.map(story => {
         state.fetchedStories[story.id] = story;
+        return story.id;
       });
       return {
         ...state,

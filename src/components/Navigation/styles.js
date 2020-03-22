@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { tablet, desk } from 'styles/mediaQueries';
+import { tablet } from 'styles/mediaQueries';
 
 // Header, Link, Logo, Nav, Action
 

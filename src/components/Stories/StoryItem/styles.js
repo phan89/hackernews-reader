@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { AnimitedBlink } from 'components/Loader/styles';
-import { mobile, tablet } from 'styles/mediaQueries';
+import { tablet } from 'styles/mediaQueries';
 
 export const BoxScore = styled.div`
   font-size: 12px;
