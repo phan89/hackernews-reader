@@ -11,9 +11,7 @@ import {
   DropdownMenuContainer,
 } from './styles';
 import { MainSettingsMenu } from 'components/Settings';
-
 import { GoThreeBars } from 'react-icons/go';
-
 import { appActions } from 'store/app/actions';
 
 class NavBar extends Component {

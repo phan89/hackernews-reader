@@ -2,26 +2,35 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
-import { Wrapper } from './style.js';
+import { Wrapper, LoaderWrapper, LoaderSize } from './style.js';
 import NavBar from 'components/Navigation';
 import StoryPagesCollection from 'components/Stories/StoryPagesCollection';
 import { ModalProvider } from 'styled-react-modal';
 
-import Loader from '../Loader/index.js';
+import { authenticatedSelector } from 'store/auth/selectors';
+import { storyActions } from 'store/story/actions';
+import { DoubleBounceLoader } from 'components/Loader';
 
 class App extends Component {
   render() {
-    const { theme, firebaseReducer } = this.props;
+    const { theme, firebaseReducer, pendingActions } = this.props;
     const firebaseAuth = firebaseReducer.auth;
     const isAuthLoaded = firebaseAuth.isLoaded;
+    const isLoading = !isAuthLoaded || pendingActions;
     return (
       <ThemeProvider theme={theme}>
         <ModalProvider>
           <Wrapper>
             <NavBar firebaseAuth={firebaseAuth} />
+
+            {isLoading && (
+              <LoaderWrapper>
+                <DoubleBounceLoader color={theme.text.primary} size={LoaderSize} />
+              </LoaderWrapper>
+            )}
+
             <StoryPagesCollection />
           </Wrapper>
-          {isAuthLoaded && <Loader />}
         </ModalProvider>
       </ThemeProvider>
     );
@@ -33,6 +42,13 @@ class App extends Component {
 
   componentDidUpdate() {
     this.setBodyBackgroundColor();
+
+    const { isAuthenticated, fetchStoriesBookmark, fetchingBookmark } = this.props;
+
+    // authenticated, fetch the favourite stories
+    if (isAuthenticated && fetchingBookmark === null) {
+      fetchStoriesBookmark();
+    }
   }
 
   setBodyBackgroundColor() {
@@ -44,11 +60,17 @@ const mapStateToProps = state => {
   return {
     theme: state.app.theme,
     firebaseReducer: state.firebase,
+    pendingActions: state.app.pendingActions,
+    isAuthenticated: authenticatedSelector(state),
+    fetchingBookmark: state.story.fetchingBookmark,
+    neverFetchedBookmark: state.story.favStories !== null,
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    fetchStoriesBookmark: () => dispatch(storyActions.fetchStoriesBookmark({})),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

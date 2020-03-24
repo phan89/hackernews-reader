@@ -15,3 +15,9 @@ firebase.initializeApp(firebaseConfig);
 firebase.firestore();
 
 export default firebase;
+
+export const rrfConfig = {
+  userProfile: 'users',
+  useFirestoreForProfile: true,
+  enableClaims: true,
+};

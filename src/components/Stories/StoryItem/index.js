@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import timeago from 'epoch-timeago';
+import { appActions } from 'store/app/actions';
 
 import {
   ExternalLink,
@@ -16,17 +17,33 @@ import {
   ContentBox,
   ChatBox,
 } from './styles';
+import StoryItemActions from './storyActions';
 import { getHostFromURL } from 'utils/Utils';
 import hackernewsAPI from 'services/hackernewsAPI';
 
 class StoryItem extends Component {
+  constructor() {
+    super();
+    this.hideActiveStorySettings = this.hideActiveStorySettings.bind(this);
+  }
+
+  hideActiveStorySettings(evt) {
+    const { setActiveStorySettings } = this.props;
+    setActiveStorySettings(null);
+  }
+
   render() {
     const { story, bogusLoader } = this.props;
     const postedTime = story.time * 1000;
     const domainHost = getHostFromURL(story.url);
     const commentURL = hackernewsAPI.getStoryCommentURL(story.id);
+    const externalURL = story.url || commentURL;
+
     return (
-      <StoryListItem bogusLoader={bogusLoader}>
+      <StoryListItem
+        bogusLoader={bogusLoader}
+        onMouseLeave={this.hideActiveStorySettings}
+      >
         <ExternalLink href={commentURL}>
           <HotBox>
             <BoxScore
@@ -50,7 +67,7 @@ class StoryItem extends Component {
         </ExternalLink>
         <ContentBox>
           <ExternalLink
-            href={story.url}
+            href={externalURL}
             rel='nofollow noreferrer noopener'
             target='_blank'
           >
@@ -73,6 +90,7 @@ class StoryItem extends Component {
               </Host>
             )}
           </Description>
+          <StoryItemActions story={story} />
         </ContentBox>
       </StoryListItem>
     );
@@ -81,6 +99,11 @@ class StoryItem extends Component {
 
 const mapStateToProps = state => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => {
+  return {
+    setActiveStorySettings: storyID =>
+      dispatch(appActions.setActiveStorySettings({ currentActiveStorySetting: storyID })),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(StoryItem);

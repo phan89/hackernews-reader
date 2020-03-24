@@ -24,7 +24,8 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "styled-components": "^4.3.2",
-    "styled-react-modal": "^2.0.0"
+    "styled-react-modal": "^2.0.0",
+    "styled-spinkit": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

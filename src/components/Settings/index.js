@@ -11,6 +11,7 @@ import { SignedOutSettings } from './signedOutSettings';
 
 import SignInScreen from 'components/Auth/signInScreen';
 import { appActions } from 'store/app/actions';
+import { Loader } from 'components/Loader';
 
 class MainSettingsMenuComponent extends Component {
   constructor() {
@@ -40,12 +41,17 @@ class MainSettingsMenuComponent extends Component {
             onMouseEnter={this.showSettingsMenu}
             onMouseLeave={this.hideSettingsMenu}
           >
-            <DropdownMenu>
-              {isSignedIn && <SignedInSettings />}
-              {isSignedOut && <SignedOutSettings />}
-            </DropdownMenu>
+            {isLoaded ? (
+              <DropdownMenu>
+                {isSignedIn && <SignedInSettings />}
+                {isSignedOut && <SignedOutSettings />}
+              </DropdownMenu>
+            ) : (
+              <Loader />
+            )}
           </DropdownMenuInnerWrapper>
         </DropdownMenuOuterWrapper>
+
         <SignInScreen />
       </React.Fragment>
     );

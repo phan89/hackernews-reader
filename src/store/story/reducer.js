@@ -8,6 +8,10 @@ const initialState = () => ({
   isFetching: false,
   pagesFetched: false,
   fetchedStories: {},
+
+  // bookmark
+  favStories: null,
+  fetchingBookmark: null,
 });
 
 const story = (state = initialState(), { type, payload }) => {
@@ -41,7 +45,7 @@ const story = (state = initialState(), { type, payload }) => {
         isFetching: false,
       };
     }
-    case actionTypes.FETCH_TOP_STORY_IDS_SUCCESS:
+    case actionTypes.FETCH_TOP_STORY_IDS_SUCCESS: {
       const { pages } = payload;
       const pagesFetched = typeof pages !== 'undefined' && pages.length !== 0;
 
@@ -51,8 +55,9 @@ const story = (state = initialState(), { type, payload }) => {
         isFetching: false,
         pagesFetched: pagesFetched,
       };
+    }
 
-    case actionTypes.FETCH_PAGE_BATCHES_SUCCESS:
+    case actionTypes.FETCH_PAGE_BATCHES_SUCCESS: {
       const { pageStoryIDs, pageIndex } = payload;
 
       state.pages[pageIndex].storyIDs = pageStoryIDs;
@@ -61,6 +66,67 @@ const story = (state = initialState(), { type, payload }) => {
         ...state,
         isFetching: false,
       };
+    }
+
+    // bookmark
+    case actionTypes.FETCH_STORIES_BOOKMARK_REQUEST: {
+      return {
+        ...state,
+        fetchingBookmark: true,
+      };
+    }
+
+    case actionTypes.FETCH_STORIES_BOOKMARK_FAILURE: {
+      return {
+        ...state,
+        fetchingBookmark: false,
+      };
+    }
+
+    case actionTypes.FETCH_STORIES_BOOKMARK_SUCCESS: {
+      const { fetchedFavStories } = payload;
+      const favStories = state.favStories || {};
+      fetchedFavStories.map(favStory => {
+        favStories[favStory.id] = true;
+        return null;
+      });
+
+      return {
+        ...state,
+        favStories: favStories,
+        fetchingBookmark: false,
+      };
+    }
+
+    case actionTypes.LOAD_BOOKMARK_STORIES_REQUEST: {
+      return {
+        ...state,
+        isFetching: false,
+      };
+    }
+
+    case actionTypes.ADD_STORY_FAVORITE_SUCCESS: {
+      const { story } = payload;
+      if (state.favStories === null) {
+        state.favStories = {};
+      }
+      state.favStories[story.id] = true;
+      return {
+        ...state,
+        isFetching: false,
+      };
+    }
+
+    case actionTypes.REMOVE_STORY_FAVORITE_SUCCESS: {
+      const { story } = payload;
+      const { favStories } = state;
+      const { [story.id]: _, ...updatedFavStories } = favStories;
+      return {
+        ...state,
+        favStories: updatedFavStories,
+        isFetching: false,
+      };
+    }
 
     default:
       return state;

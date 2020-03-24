@@ -1,7 +1,8 @@
 import React from 'react';
 import { Animation } from './styles';
+import { DoubleBounce } from 'styled-spinkit';
 
-const Loader = () => {
+const LoaderComponent = () => {
   return (
     <div>
       <Animation>
@@ -13,4 +14,5 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export const Loader = LoaderComponent;
+export const DoubleBounceLoader = DoubleBounce;

@@ -1,7 +1,8 @@
 export const getHostFromURL = url => {
   let domain = undefined;
   if (url) {
-    const urlMatches = url.match(/^https:\/\/([^/?#]+)(?:[/?#]|$)/i);
+    // eslint-disable-next-line
+    const urlMatches = url.match(/^https?\:\/\/(?:www\.)?([^\/?#]+)(?:[\/?#]|$)/i);
     domain = urlMatches && urlMatches[1]; // domain will be null if no match is found
   }
 

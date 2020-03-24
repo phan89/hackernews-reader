@@ -6,7 +6,7 @@ const isAuthLoadedSelector = state => {
 };
 
 const hasAuthSelector = state => {
-  return isEmpty(state.firebase.auth);
+  return !isEmpty(state.firebase.auth);
 };
 
 export const authenticatedSelector = createSelector(

@@ -29,7 +29,7 @@ export const AnimitedBlink = css`
    * Use the blink animation, which is defined above
    */
   animation-name: ${blink};
-  /**
+  /**mport
    * The total time of animation
    */
   animation-duration: 1s;
@@ -64,7 +64,6 @@ export const Animation = styled.div`
     margin-right: 4px;
     font-size: 80px;
     line-height: 0.1;
-
     ${AnimitedBlink}
   }
 `;

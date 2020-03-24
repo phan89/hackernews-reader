@@ -7,7 +7,7 @@ import GlobalStyles from 'styles/globals';
 import configureStore from './store';
 import { Provider } from 'react-redux';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
-import firebase from 'config/firebase';
+import firebase, { rrfConfig } from 'config/firebase';
 import { createFirestoreInstance } from 'redux-firestore';
 
 const renderApp = () => {
@@ -16,12 +16,6 @@ const renderApp = () => {
   if (process.env.NODE_ENV !== 'production') {
   }
 
-  // react redux configs
-  const rrfConfig = {
-    userProfile: 'users',
-    useFirestoreForProfile: true, // Store in Firestore instead of Real Time DB
-    enableLogging: false,
-  };
   const rrfProps = {
     firebase,
     config: rrfConfig,

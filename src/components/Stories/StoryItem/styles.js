@@ -9,6 +9,7 @@ export const BoxScore = styled.div`
 
 export const HotBox = styled.div`
   min-width: 80px;
+  height: 100%;
 
   display: flex;
   justify-content: center;
@@ -69,6 +70,7 @@ export const StoryListItem = styled.li`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  height: 100%;
 
   ${({ bogusLoader }) =>
     bogusLoader &&
@@ -102,6 +104,7 @@ export const ExternalLink = styled.a`
   flex-direction: row;
   align-items: center;
   text-decoration: none;
+  cursor: pointer;
 
   &:hover {
     color: ${({ theme }) => theme.hover.linkColor};
@@ -128,4 +131,53 @@ export const SimpleLink = styled.a`
 
 export const CommentLink = styled.div`
   color: ${({ theme }) => theme.text.secondary};
+`;
+
+export const StoryActionsContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  float-direction: row;
+  color: ${({ theme }) => theme.text.secondary};
+  padding-right: 1em;
+  position: relative;
+`;
+
+export const StoryActionButton = styled.div`
+  position: absolute;
+  top: -0.5em;
+  cursor: pointer;
+  z-index: 99;
+`;
+
+export const StoryActionsPanel = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 100;
+  top: -3.5em;
+  padding: 10px;
+  background-color: ${({ theme }) => theme.background.primary};
+  filter: brightness(50%);
+  border-radius: 10%;
+  border: 1px solid ${({ theme }) => theme.border};
+`;
+
+export const StoryActionItem = styled.div`
+  display: flex;
+  padding: 5px;
+  cursor: pointer;
+  z-index: 100;
+  a {
+    font-size: 14px;
+  }
+  &:hover {
+    filter: brightness(200%);
+  }
+`;
+
+export const StoryActionItemLabel = styled.label`
+  color: ${({ theme }) => theme.text.secondary};
+  font-size: 14px;
+  margin-left: 4px;
+  cursor: pointer;
 `;

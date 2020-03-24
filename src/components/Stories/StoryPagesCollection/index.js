@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Loader from 'components/Loader';
+import { Loader } from 'components/Loader';
 
 import { storyActions } from 'store/story/actions';
 import Utils from 'store/story//utils';
@@ -41,7 +41,7 @@ class StoryPagesCollection extends Component {
   }
 
   render() {
-    const { pagedStoriesFetched, hasMorePages } = this.props;
+    const { pagedStoriesFetched, hasMorePages, nextPageToFetch } = this.props;
     return (
       <InfiniteScroll
         dataLength={pagedStoriesFetched.length}
@@ -57,7 +57,7 @@ class StoryPagesCollection extends Component {
             return <StoryPage key={page.index} page={page} />;
           })}
 
-        {!pagedStoriesFetched && <Loader></Loader>}
+        {pagedStoriesFetched && nextPageToFetch > 1 && hasMorePages && <Loader />}
       </InfiniteScroll>
     );
   }
