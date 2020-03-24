@@ -7,6 +7,13 @@ class StoryPage extends Component {
   render() {
     const { page, bogusLoader } = this.props;
     const batches = Utils.getPageBatches(page);
+
+    let baseKey = {};
+    if (batches) {
+      baseKey = batches.map(batch => {
+        return batch.batchStoryIDs.reduce((a, b) => a + b, 0);
+      });
+    }
     return (
       <StoryPageWrapper bogusLoader={bogusLoader}>
         {batches &&
@@ -16,7 +23,7 @@ class StoryPage extends Component {
               pageIndex={page.index}
               batchStories={batch.batchStories}
               batchIndex={batch.index}
-              key={batch.index}
+              key={batch.index + baseKey[batch.index]}
               bogusLoader={bogusLoader}
             ></StoryBatchWrapper>
           ))}

@@ -17,7 +17,16 @@ const initialState = () => ({
 const story = (state = initialState(), { type, payload }) => {
   switch (type) {
     case actionTypes.RELOAD_STORIES: {
-      return initialState();
+      const { keepBookmark } = payload;
+      const initState = initialState();
+      if (keepBookmark) {
+        return {
+          ...initState,
+          favStories: state.favStories,
+        };
+      } else {
+        return initState;
+      }
     }
     case actionTypes.FETCH_TOP_STORY_IDS_REQUEST: {
       return {

@@ -58,8 +58,9 @@ class StoryBatchWrapper extends Component {
       fetchBatchStoriesFromStoryIDs,
       batchIndex,
       pageIndex,
+      fetchedStories,
     } = this.props;
-    if (!batchStories || batchStories.length === 0) {
+    if (!batchStories || batchStories.length === 0 || !fetchedStories) {
       fetchBatchStoriesFromStoryIDs(batchStoryIDs, batchIndex, pageIndex);
     }
   }

@@ -6,6 +6,7 @@ import { GoSignOut, GoPerson, GoBookmark, GoSync } from 'react-icons/go';
 import { CommonSettings } from './commonSettings';
 import firebase from 'config/firebase';
 import { storyActions } from 'store/story/actions';
+import { appActions } from 'store/app/actions';
 
 class SignedInSettingsComponent extends Component {
   constructor() {
@@ -13,10 +14,16 @@ class SignedInSettingsComponent extends Component {
     this.signUserOut = this.signUserOut.bind(this);
     this.fetchBookmarkStories = this.fetchBookmarkStories.bind(this);
     this.fetchTopStories = this.fetchTopStories.bind(this);
+    this.toggleSettingsMenu = this.toggleSettingsMenu.bind(this);
 
     this.state = {
       savedStoriesLoaded: false,
     };
+  }
+
+  toggleSettingsMenu() {
+    const { mainMenuVisible } = this.props;
+    this.props.setSettingsMenuVisibility(!mainMenuVisible);
   }
 
   signUserOut(evt) {
@@ -24,21 +31,25 @@ class SignedInSettingsComponent extends Component {
   }
 
   fetchBookmarkStories(evt) {
-    const { loadBookmarkStories } = this.props;
+    const { loadBookmarkStories, reloadStories } = this.props;
+    reloadStories(true);
     loadBookmarkStories();
     this.setState({
       savedStoriesLoaded: true,
     });
+    this.toggleSettingsMenu();
   }
 
   fetchTopStories(evt) {
     const { fetchStoryPages, reloadStories } = this.props;
-    reloadStories();
+    reloadStories(false);
     fetchStoryPages();
 
     this.setState({
       savedStoriesLoaded: false,
     });
+
+    this.toggleSettingsMenu();
   }
 
   render() {
@@ -89,10 +100,10 @@ class SignedInSettingsComponent extends Component {
 
 const mapStateToProps = state => {
   const storyReducer = state.story;
-
   return {
     firebaseAuth: state.firebase.auth,
     isFetching: storyReducer.isFetching,
+    mainMenuVisible: state.app.mainMenuVisible,
   };
 };
 
@@ -101,7 +112,10 @@ const mapDispatchToProps = dispatch => {
     loadBookmarkStories: () => dispatch(storyActions.loadBookmarkStories({})),
     fetchStoryPages: () =>
       dispatch(storyActions.fetchStoryPages({ fetchFirstPage: true })),
-    reloadStories: () => dispatch(storyActions.reloadStories()),
+    reloadStories: keepBookmark =>
+      dispatch(storyActions.reloadStories({ keepBookmark: keepBookmark })),
+    setSettingsMenuVisibility: visible =>
+      dispatch(appActions.setSettingsMenuVisibility({ visible: visible })),
   };
 };
 
