@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/hackernews-reader/static/js/main.dba1abfa.chunk.js",
-    "main.js.map": "/hackernews-reader/static/js/main.dba1abfa.chunk.js.map",
+    "main.js": "/hackernews-reader/static/js/main.688b5203.chunk.js",
+    "main.js.map": "/hackernews-reader/static/js/main.688b5203.chunk.js.map",
     "runtime-main.js": "/hackernews-reader/static/js/runtime-main.6b779de2.js",
     "runtime-main.js.map": "/hackernews-reader/static/js/runtime-main.6b779de2.js.map",
-    "static/js/2.8c256fd5.chunk.js": "/hackernews-reader/static/js/2.8c256fd5.chunk.js",
-    "static/js/2.8c256fd5.chunk.js.map": "/hackernews-reader/static/js/2.8c256fd5.chunk.js.map",
+    "static/js/2.6935b3a4.chunk.js": "/hackernews-reader/static/js/2.6935b3a4.chunk.js",
+    "static/js/2.6935b3a4.chunk.js.map": "/hackernews-reader/static/js/2.6935b3a4.chunk.js.map",
     "index.html": "/hackernews-reader/index.html",
-    "precache-manifest.15b91df8ba1ff84985169d0c8e133d52.js": "/hackernews-reader/precache-manifest.15b91df8ba1ff84985169d0c8e133d52.js",
+    "precache-manifest.57bcd8e2de3fa6b43d04270778507987.js": "/hackernews-reader/precache-manifest.57bcd8e2de3fa6b43d04270778507987.js",
     "service-worker.js": "/hackernews-reader/service-worker.js",
-    "static/js/2.8c256fd5.chunk.js.LICENSE.txt": "/hackernews-reader/static/js/2.8c256fd5.chunk.js.LICENSE.txt"
+    "static/js/2.6935b3a4.chunk.js.LICENSE.txt": "/hackernews-reader/static/js/2.6935b3a4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6b779de2.js",
-    "static/js/2.8c256fd5.chunk.js",
-    "static/js/main.dba1abfa.chunk.js"
+    "static/js/2.6935b3a4.chunk.js",
+    "static/js/main.688b5203.chunk.js"
   ]
 }
