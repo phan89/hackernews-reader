@@ -13,11 +13,13 @@ class BookmarkStoryComponent extends Component {
   }
 
   addStoryBookmarkItem(evt) {
+    evt.preventDefault();
     const { story, addBookmarkStory } = this.props;
     addBookmarkStory(story);
   }
 
   removeStoryBookmarkItem(evt) {
+    evt.preventDefault();
     const { story, removeBookmarkStory } = this.props;
     removeBookmarkStory(story);
   }
@@ -28,13 +30,13 @@ class BookmarkStoryComponent extends Component {
       <StoryActionItem>
         {!isFavouriteStory ? (
           <ExternalLink href='#' onClick={this.addStoryBookmarkItem}>
-            <FaBookmark color='white'></FaBookmark>
             <StoryActionItemLabel>Save story</StoryActionItemLabel>
+            <FaBookmark color='white'></FaBookmark>
           </ExternalLink>
         ) : (
           <ExternalLink href='#' onClick={this.removeStoryBookmarkItem}>
-            <FaBookmark color='#ef4056'></FaBookmark>
             <StoryActionItemLabel>Unsave story</StoryActionItemLabel>
+            <FaBookmark color='#ef4056'></FaBookmark>
           </ExternalLink>
         )}
       </StoryActionItem>

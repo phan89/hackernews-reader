@@ -58,7 +58,7 @@ export const ContentBox = styled.div`
   flex: 1;
 
   ${tablet} {
-    padding: 12px 0 12px 6px;
+    padding: 1;
   }
 `;
 
@@ -136,7 +136,7 @@ export const CommentLink = styled.div`
 export const StoryActionsContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  float-direction: row;
+  flex-direction: row;
   color: ${({ theme }) => theme.text.secondary};
   padding-right: 1em;
   position: relative;
@@ -154,7 +154,7 @@ export const StoryActionsPanel = styled.div`
   flex-direction: column;
   position: absolute;
   z-index: 100;
-  top: -3.5em;
+  top: -3.8em;
   padding: 10px;
   background-color: ${({ theme }) => theme.background.primary};
   filter: brightness(50%);
@@ -163,6 +163,7 @@ export const StoryActionsPanel = styled.div`
 `;
 
 export const StoryActionItem = styled.div`
+  margin-left: auto;
   display: flex;
   padding: 5px;
   cursor: pointer;
@@ -178,6 +179,6 @@ export const StoryActionItem = styled.div`
 export const StoryActionItemLabel = styled.label`
   color: ${({ theme }) => theme.text.secondary};
   font-size: 14px;
-  margin-left: 4px;
   cursor: pointer;
+  margin-right: 5px;
 `;

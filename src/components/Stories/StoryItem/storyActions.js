@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { isMobileOrTablet } from 'utils/Utils';
 
-import { StoryActionsContainer, StoryActionButton, StoryActionsPanel } from './styles';
+import {
+  StoryActionsContainer,
+  StoryActionButton,
+  StoryActionsPanel,
+  StoryActionItemLabel,
+  StoryActionItem,
+} from './styles';
 import { authenticatedSelector } from 'store/auth/selectors';
 
+import { FaTimes } from 'react-icons/fa';
 import { GoKebabHorizontal } from 'react-icons/go';
 import { SendToPocketAction } from './Actions/sharerPocket';
 import { BookmarkStoryAction } from './Actions/bookmarkStory';
@@ -57,6 +64,10 @@ class StoryItemActions extends Component {
         </StoryActionButton>
         {activeSettings && (
           <StoryActionsPanel onMouseLeave={!isMobile ? this.hideStoryActions : null}>
+            <StoryActionItem onClick={this.hideStoryActions}>
+              <StoryActionItemLabel>Close</StoryActionItemLabel>
+              <FaTimes />
+            </StoryActionItem>
             {externalURL && <SendToPocketAction url={externalURL} title={story.title} />}
             {isAuthenticated && <BookmarkStoryAction story={story} />}
           </StoryActionsPanel>

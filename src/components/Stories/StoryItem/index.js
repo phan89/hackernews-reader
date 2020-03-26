@@ -44,24 +44,16 @@ class StoryItem extends Component {
         bogusLoader={bogusLoader}
         onMouseLeave={this.hideActiveStorySettings}
       >
-        <ExternalLink href={commentURL}>
+        <ExternalLink
+          href={commentURL}
+          href={commentURL}
+          rel='nofollow noreferrer noopener'
+          target='_blank'
+        >
           <HotBox>
-            <BoxScore
-              href={commentURL}
-              rel='nofollow noreferrer noopener'
-              target='_blank'
-            >
-              {story.score}
-            </BoxScore>
+            <BoxScore>{story.score}</BoxScore>
             <ChatBox>
-              <CommentLink
-                href={commentURL}
-                rel='nofollow noreferrer noopener'
-                target='_blank'
-              >
-                {' '}
-                {story.descendants}
-              </CommentLink>
+              <CommentLink> {story.descendants}</CommentLink>
             </ChatBox>
           </HotBox>
         </ExternalLink>

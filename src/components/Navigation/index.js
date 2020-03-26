@@ -31,7 +31,8 @@ class NavBar extends Component {
     this.props.setSettingsMenuVisibility(true);
   }
 
-  toggleSettingsMenu() {
+  toggleSettingsMenu(evt) {
+    evt.preventDefault();
     const { mainMenuVisible } = this.props;
     this.props.setSettingsMenuVisibility(!mainMenuVisible);
   }

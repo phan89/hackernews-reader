@@ -12,6 +12,7 @@ class CommonSettingsComponents extends Component {
   }
 
   toggleTheme(evt) {
+    evt.preventDefault();
     const { theme, setTheme } = this.props;
     if (theme.name === themes.dark.name) {
       setTheme(themes.light);

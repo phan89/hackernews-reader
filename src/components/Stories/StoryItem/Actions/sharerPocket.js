@@ -44,12 +44,13 @@ export const SendToPocketAction = props => {
     <StoryActionItem>
       <ExternalLink
         href='#'
-        onClick={() => {
+        onClick={evt => {
+          evt.preventDefault();
           openWindowsModal(pocketShareURI, 'Pocket', 550, 325);
         }}
       >
-        <FaGetPocket color='#ef4056'></FaGetPocket>
         <StoryActionItemLabel>Pocket story</StoryActionItemLabel>
+        <FaGetPocket color='#ef4056'></FaGetPocket>
       </ExternalLink>
     </StoryActionItem>
   );
