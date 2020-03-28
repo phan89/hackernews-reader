@@ -68,9 +68,10 @@ const story = (state = initialState(), { type, payload }) => {
 
     case actionTypes.FETCH_PAGE_BATCHES_SUCCESS: {
       const { pageStoryIDs, pageIndex } = payload;
-
-      state.pages[pageIndex].storyIDs = pageStoryIDs;
-      state.pages[pageIndex].status = PAGE_STATUS.FETCHED;
+      if (pageStoryIDs && state.pages && state.pages[pageIndex]) {
+        state.pages[pageIndex].storyIDs = pageStoryIDs;
+        state.pages[pageIndex].status = PAGE_STATUS.FETCHED;
+      }
       return {
         ...state,
         isFetching: false,
