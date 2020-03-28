@@ -40,7 +40,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "https://phan89.github.io/hackernews-reader",
+  "homepage": "https://hackernews.phan89.com",
   "browserslist": {
     "production": [
       ">0.2%",
