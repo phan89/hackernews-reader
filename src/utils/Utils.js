@@ -38,7 +38,7 @@ let timeFunctions = [
   makeTimeString('y', '1y ago'),
   makeTimeString('M', '1M ago'),
   makeTimeString('w', '1w ago'),
-  makeTimeString('d', '1w ago'),
+  makeTimeString('d', '1d ago'),
   makeTimeString('h', '1h ago'),
   makeTimeString('m', '1m ago'),
   _ => 'just now',
