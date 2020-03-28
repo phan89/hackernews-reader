@@ -26,3 +26,27 @@ export const isMobileOrTablet = () => {
   })(navigator.userAgent || navigator.vendor || window.opera);
   return check;
 };
+
+let timeSegments = [3.154e10, 2.628e9, 6.048e8, 8.64e7, 3.6e6, 60000, -Infinity];
+
+let makeTimeString = (unit, singularString) => (timeSegment, time) =>
+  time >= 2 * timeSegment
+    ? `${Math.floor(time / timeSegment)}${unit} ago`
+    : singularString;
+
+let timeFunctions = [
+  makeTimeString('y', '1y ago'),
+  makeTimeString('M', '1M ago'),
+  makeTimeString('w', '1w ago'),
+  makeTimeString('d', '1w ago'),
+  makeTimeString('h', '1h ago'),
+  makeTimeString('m', '1m ago'),
+  _ => 'just now',
+];
+
+export const timeago = timeStamp => {
+  let timeDifference = Date.now() - timeStamp;
+  let index = timeSegments.findIndex(time => timeDifference >= time);
+  let timeAgo = timeFunctions[index](timeSegments[index], timeDifference);
+  return timeAgo;
+};

@@ -56,11 +56,11 @@ class StoryItemActions extends Component {
       currentActiveStorySetting && currentActiveStorySetting === story.id;
     return (
       <StoryActionsContainer>
-        <StoryActionButton>
-          <GoKebabHorizontal
-            onClick={isMobile ? this.toggleStoryActions : null}
-            onMouseEnter={!isMobile ? this.showStoryActions : null}
-          ></GoKebabHorizontal>
+        <StoryActionButton
+          onClick={isMobile ? this.toggleStoryActions : null}
+          onMouseEnter={!isMobile ? this.showStoryActions : null}
+        >
+          <GoKebabHorizontal></GoKebabHorizontal>
         </StoryActionButton>
         {activeSettings && (
           <StoryActionsPanel onMouseLeave={!isMobile ? this.hideStoryActions : null}>

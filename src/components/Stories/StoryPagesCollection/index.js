@@ -7,7 +7,7 @@ import Utils from 'store/story//utils';
 
 import { hasMorePagesSelector } from 'store/story/selectors';
 
-import InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from 'react-infinite-scroll-component-v2';
 import StoryPage from '../StoryPage';
 
 class StoryPagesCollection extends Component {
@@ -51,6 +51,7 @@ class StoryPagesCollection extends Component {
         refreshFunction={this.refreshData}
         pullDownToRefresh={true}
         style={{ height: '100%', overflow: 'visible' }}
+        forcedStyle={{ overflow: 'visible' }}
       >
         {pagedStoriesFetched &&
           pagedStoriesFetched.map(page => {

@@ -144,9 +144,10 @@ export const StoryActionsContainer = styled.div`
 
 export const StoryActionButton = styled.div`
   position: absolute;
-  top: -0.5em;
+  top: -1.25em;
   cursor: pointer;
   z-index: 99;
+  padding: 7px;
 `;
 
 export const StoryActionsPanel = styled.div`
@@ -154,7 +155,7 @@ export const StoryActionsPanel = styled.div`
   flex-direction: column;
   position: absolute;
   z-index: 100;
-  top: -3.8em;
+  top: -5em;
   padding: 10px;
   background-color: ${({ theme }) => theme.background.primary};
   filter: brightness(50%);

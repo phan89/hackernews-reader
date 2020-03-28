@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import timeago from 'epoch-timeago';
 import { appActions } from 'store/app/actions';
-
+import { timeago } from 'utils/Utils';
 import {
   ExternalLink,
   Title,
