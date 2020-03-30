@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { StoryActionItem, ExternalLink, StoryActionItemLabel } from '../styles';
+import { isMobileOrTablet } from 'utils/Utils';
 
 import { FaGetPocket } from 'react-icons/fa';
 
@@ -40,15 +41,19 @@ export const SendToPocketAction = props => {
   const encodedURI = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
   const pocketShareURI = `https://getpocket.com/edit?url=${encodedURI}&title=${encodedTitle}&tags=hackernews,tech`;
+  const isMobile = isMobileOrTablet();
   return (
-    <StoryActionItem>
-      <ExternalLink
-        href='#'
-        onClick={evt => {
-          evt.preventDefault();
-          openWindowsModal(pocketShareURI, 'Pocket', 550, 325);
-        }}
-      >
+    <StoryActionItem
+      onClick={
+        isMobile
+          ? null
+          : evt => {
+              evt.preventDefault();
+              openWindowsModal(pocketShareURI, 'Pocket', 550, 325);
+            }
+      }
+    >
+      <ExternalLink href={pocketShareURI}>
         <StoryActionItemLabel>Pocket story</StoryActionItemLabel>
         <FaGetPocket color='#ef4056'></FaGetPocket>
       </ExternalLink>
